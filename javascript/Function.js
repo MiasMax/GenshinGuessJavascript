@@ -47,6 +47,16 @@ function GiveUp(){//pour afficher le nom à trouver
     NomPersoM.appendChild(newNomPerso);
 }
 
+function ClearGuess(){
+    var e = document.querySelector("#ListeGuess");
+    //e.firstElementChild can be used.
+    var child = e.lastElementChild; 
+    while (child) {
+        e.removeChild(child);
+        child = e.lastElementChild;
+    }
+}
+
 
 function createBox(TypeChara,MystChara){//ça crée un boite mdr 
     let currentDiv = document.querySelector("#ListeGuess").firstChild;//choix de la div dont on vas ajouté les boites
