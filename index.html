@@ -8,19 +8,11 @@
         <script type="text/javascript" src="javascript/Function.js"></script>
     </head>
 
-    <body>
-       
-
-        <input  type="submit" value="Reset" onclick="choixPerso()"></input>
-
-        <div id="NomPersoM">Nom du perso rechercher  </div>
-
-        
-
-
-
-
-
+    <body onload="choixPerso()">
+        <div id="NomPersoM" class="GiveUp">
+            <input  type="submit" value="Reset" onclick="choixPerso()"></input><!--le bouton reset -->
+            <input  type="submit" value="GiveUp" onclick="GiveUp()"></input><!--pour afficher le nom à trouver -->
+        </div>
 
         <div class ="accueil">
             <h1>
@@ -31,25 +23,16 @@
             </p>
         </div>
         
-        <div class="rep">
-            
+        <div class="rep"><!--le Form -->
             <div class="autocomplete">
-                  
-
-                <input id="form" placeholder="Type character name ..." type="search" name="nom" onkeypress="verifInput(this.id, 'ok');"/>
-                    
-   
+                <input id="form" placeholder="Type character name ..." type="search" name="nom" onkeypress="verifInput(this.id, 'ok');"/><!--le textBox -->
+                <script>autocomplete(document.getElementById("form"), listNomCharacter);</script><!--lance le script autocomplete -->
             </div>
-            <input type="submit" value="OK" onclick="createLine()" id="ok" name="btnSub" />
-            
+            <input type="submit" value="OK" onclick="createLine()" id="ok" name="btnSub" /><!--le OK -->
         </div>
-    
-
-
-
         
-        <div id="jeu" class="jeu">
-            <div class ="categorie">
+        <div id="jeu" class="jeu"><!--la partie ou le jeu se passe -->
+            <div class ="categorie"><!--la partie qui affiche les différentes catégorie  -->
                     <div>
                         <h3>
                             Image
@@ -92,8 +75,8 @@
                     </div>
             </div>
             
-            <div id="ListeGuess" class="ListeGuess">
-                <div id="Guess" class="Guess">Guess</div>
+            <div id="ListeGuess" class="ListeGuess"><!--sert de repere pour la géneration des casses -->
+                <div id="Guess" class="Guess"></div><!--sert de first child-->
             </div>  
         </div>
     </body>
