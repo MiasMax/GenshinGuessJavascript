@@ -69,9 +69,7 @@ function ClearGuess(){
 
 function ClearGiveUp(){
   var e = document.querySelector("#GiveUpid");
-  alert(e);
   var child = e.lastElementChild; 
-  alert(child);
   while (child) {
       e.removeChild(child);
       child = e.lastElementChild;
