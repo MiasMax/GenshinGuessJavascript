@@ -41,15 +41,25 @@ function choixPerso(){//permet de choisir un personnage
 }
 
 function GiveUp(){//pour afficher le nom à trouver
-    let espace = document.createTextNode(" : ");
-    NomPersoM.appendChild(espace);
+    let newDivGiveUp = document.createElement("div");
+    let newh2GiveUp = document.createElement("h2");
     let newNomPerso = document.createTextNode(MystnomCharacter);
-    NomPersoM.appendChild(newNomPerso);
+    let itwas = document.createTextNode(" It was : ");
+    newh2GiveUp.appendChild(itwas);
+    newh2GiveUp.appendChild(newNomPerso);
+    newDivGiveUp.appendChild(newh2GiveUp);
+    GiveUpid.appendChild(newDivGiveUp);
 }
+
+function ResetClearButton(){
+  ClearGuess();
+  ClearGiveUp();
+  choixPerso();
+}
+
 
 function ClearGuess(){
     var e = document.querySelector("#ListeGuess");
-    //e.firstElementChild can be used.
     var child = e.lastElementChild; 
     while (child) {
         e.removeChild(child);
@@ -57,6 +67,16 @@ function ClearGuess(){
     }
 }
 
+function ClearGiveUp(){
+  var e = document.querySelector("#GiveUpid");
+  alert(e);
+  var child = e.lastElementChild; 
+  alert(child);
+  while (child) {
+      e.removeChild(child);
+      child = e.lastElementChild;
+  }
+}
 
 function createBox(TypeChara,MystChara){//ça crée un boite mdr 
     let currentDiv = document.querySelector("#ListeGuess").firstChild;//choix de la div dont on vas ajouté les boites

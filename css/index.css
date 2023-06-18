@@ -44,10 +44,13 @@ body{
 
 .categorie {
 	width: 75%;
-	margin: auto;
+
 	margin-top: 3%;
 	display: grid;
-	grid-template-columns: repeat(8, 1fr);
+	/*margin: auto;*/
+	margin-left: 8%;
+	grid-template-columns: repeat(8, 13%);
+	grid-template-rows: 50%;
 	align-items : center;
 }
 
@@ -56,26 +59,26 @@ body{
 	color: white;
 	font-size: 140%;
 	font-family: sans-serif;
-	margin: 25px;
+	margin: 1vw;
 	text-shadow: 0 0 10px black;
 }
 
 .ListeGuess{
 	width: 75%;
-	margin: auto;
-	margin-top: 30px;
+	margin-left: 8%;
+	margin-top: 1%;
 	display: grid;
-	grid-template-columns: repeat(8, 1fr);
+	grid-template-columns: repeat(8, 13%);
 	align-items : center;
 }
 
 .box{
+	text-align: center;
 	margin: 10px;
 	box-sizing: content-box;
 	width: 8.35vW;
   	height: 8.35vW;
   	overflow: hidden;
-  	text-align: center;
 	background-color: transparent;
 	box-shadow: 0px 0px 0px 5px white, inset 0px 10px 27px -8px #141414, inset 0px -10px 27px -8px #141414, 5px 5px 15px 5px rgba(0,0,0,0);
 	border-radius: 1px;
