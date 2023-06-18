@@ -41,14 +41,16 @@ function choixPerso(){//permet de choisir un personnage
 }
 
 function GiveUp(){//pour afficher le nom à trouver
+  if(document.querySelector("#GiveUpid").lastElementChild == null){
     let newDivGiveUp = document.createElement("div");
     let newh2GiveUp = document.createElement("h2");
     let newNomPerso = document.createTextNode(MystnomCharacter);
-    let itwas = document.createTextNode(" It was : ");
+    let itwas = document.createTextNode(" It was ");
     newh2GiveUp.appendChild(itwas);
     newh2GiveUp.appendChild(newNomPerso);
     newDivGiveUp.appendChild(newh2GiveUp);
     GiveUpid.appendChild(newDivGiveUp);
+  }
 }
 
 function ResetClearButton(){

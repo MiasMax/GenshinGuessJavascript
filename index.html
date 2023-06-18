@@ -4,16 +4,12 @@
         <title>GENSHIN DLE</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/index.css">
-        <link rel="shortcut icon" href="../img/logo.png">
+        <link rel="shortcut icon" href="img/logo.png">
         <script type="text/javascript" src="javascript/Function.js"></script>
     </head>
 
     <body onload="choixPerso()">
-        <div>
-            <input  type="submit" value="Reset & Clear" onclick="ResetClearButton()"></input><!--le bouton reset pour reset les guess -->
-            <input  type="submit" value="GiveUp" onclick="GiveUp()"></input><!--pour afficher le nom à trouver -->
-            <div id="GiveUpid" class="GiveUp"></div>
-        </div>
+        
 
         <div class ="accueil">
             <h1>
@@ -32,6 +28,13 @@
             <input type="submit" value="OK" onclick="createLine()" id="ok" name="btnSub" /><!--le OK -->
         </div>
         
+        <div class="button">
+            <input type="submit" value="Reset & Clear" onclick="ResetClearButton()"></input><!--le bouton reset pour reset les guess -->
+            <input class="buttonGiveUp" type="submit" value="GiveUp" onclick="GiveUp()"></input><!--pour afficher le nom à trouver -->
+        </div>
+
+        <div id="GiveUpid" class="GiveUp"></div>
+
         <div id="jeu" class="jeu"><!--la partie ou le jeu se passe -->
             <div class ="categorie"><!--la partie qui affiche les différentes catégorie  -->
                     <div>
