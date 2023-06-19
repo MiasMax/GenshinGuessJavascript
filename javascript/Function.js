@@ -125,21 +125,21 @@ function createBoxVer(relasePatch,MystrelasePatch){//ça crée un boite des vers
     let URLimage = "img/Arrow_Bottom.png";//trouve URL de l'image 
     newImg.src = URLimage;
     newDiv.style.backgroundColor = "red";
-    let newP = document.createElement("p");
+    /*let newP = document.createElement("p");
     newP.classList.add("version");
     let newContent = document.createTextNode(relasePatch);
     newP.appendChild(newContent);
-    newDiv.appendChild(newP);
+    newDiv.appendChild(newP);*/
   }
   else if(relasePatch < MystrelasePatch){
     let URLimage = "img/Arrow_top.png";//trouve URL de l'image 
     newImg.src = URLimage;
     newDiv.style.backgroundColor = "red";
-    let newP = document.createElement("p");
+    /*let newP = document.createElement("p");
     let newContent = document.createTextNode(relasePatch);
     newP.appendChild(newContent);
     newP.classList.add("version");
-    newDiv.appendChild(newP);
+    newDiv.appendChild(newP);*/
   }
   else{
     let URLimage = "img/Arrow_valid.png";//trouve URL de l'image 
