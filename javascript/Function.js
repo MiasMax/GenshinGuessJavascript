@@ -122,7 +122,7 @@ function createBoxVer(relasePatch,MystrelasePatch){//ça crée un boite des vers
   let newImg = document.createElement("img");
   newDiv.classList.add("versionimg");
   if(relasePatch > MystrelasePatch){
-    let URLimage = "img/Arrow_Bottom.png";//trouve URL de l'image 
+    let URLimage = "img/Arrow_bot.png";//trouve URL de l'image 
     newImg.src = URLimage;
     newDiv.style.backgroundColor = "red";
     /*let newP = document.createElement("p");
