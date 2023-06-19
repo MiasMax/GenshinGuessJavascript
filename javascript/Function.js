@@ -5,7 +5,7 @@ let listRegion =         ["Mondstadt",  "Horizon Zero Dawn","Mondstadt","Inazuma
 let listElementalPower = ["Geo",        "Cryo",             "Pyro",     "Cryo",     "Hydro",    "Dendro",   "Hydro",    "Electro",  "Pyro",     "Hydro",    "Hydro",    "Cryo",     "Dendro",   "Electro",  "Pyro",     "Cryo",     "Electro",  "Cryo",     "Anemo",    "Cryo",     "Geo",      "Anemo",    "Pyro",     "Geo",      "Anemo",    "Cryo",     "Anemo",    "Electro",  "Pyro",     "Hydro",    "Electro",      "Cryo",     "Electro",  "Hydro",    "Dendro",   "Hydro",    "Geo",      "Geo",          "Cryo",     "Electro",  "Electro",  "Cryo",     "Electro",  "Anemo",    "Cryo",     "Anemo",    "Pyro",     "Dendro",   "?????",    "Anemo",    "Anemo",    "Pyro",     "Anemo",    "Hydro",    "Pyro",     "Electro",  "Pyro",     "Hydro",    "Pyro",     "Geo",      "Geo",      "Dendro",   "Electro"];
 let listWeaponType =     ["Sword",      "Bow",              "Bow",      "Sword",    "Sword",    "Sword",    "Catalyst", "Claymore", "Sword",    "Polearm",  "Bow",      "Claymore", "Bow",      "Polearm",  "Claymore", "Bow",      "Claymore", "Claymore", "Bow",      "Bow",      "Bow",      "Catalyst", "Polearm",  "Claymore", "Sword",    "Sword",    "Sword",    "Sword",    "Catalyst", "Catalyst", "Sword",        "Sword",    "Catalyst", "Catalyst", "Catalyst", "Sword",    "Catalyst", "Claymore",     "Sword",    "Polearm",  "Claymore", "Polearm",  "Bow",      "Claymore", "Polearm",  "Catalyst", "Polearm",  "Bow",      "Sword",    "Bow",      "Catalyst", "Polearm",  "Polearm",  "Sword",    "Claymore", "Catalyst", "Claymore", "Bow",      "Bow",      "Polearm",  "Polearm",  "Polearm",  "Bow"];
 let listTeamPlacement =  ["SubDPS",     "SubDPS",           "SubDPS",   "DPS",      "DPS",      "DPS",      "Healer",   "SubDPS",   "Support",  "Support",  "DPS",      "Support",  "SubDPS",   "DPS",      "DPS",      "Support",  "Support",  "DPS",      "Support",  "DPS",      "Support",  "DPS",      "DPS",      "DPS",      "Support",  "SubDPS",   "SubDPS",   "DPS",      "DPS",      "Support",  "SubDPS",       "Support",  "Support",  "SubDPS",   "SubDPS",   "SubDPS",   "DPS",      "Support",      "Healer",   "DPS",      "DPS",      "SubDPS",   "Support",  "Support",  "Support",  "SubDPS",   "Support",  "DPS",      "SubDPS",   "Support",  "DPS",      "SubDPS",   "DPS",      "SubDPS",   "Support",  "DPS",      "DPS",      "SubDPS",   "DPS",      "Support",  "Support",  "Support",  "SubDPS"];
-let listRelasePatch =    ["1.2",        "2.1",              "1.0",      "2.0",      "2.6",      "3.4",      "1.0",      "1.0",      "1.0",      "3.1",      "1.1",      "1.0",      "3.0",      "3.1",      "1.0",      "1.1",      "3.0",      "1.5",      "3.3",      "1.2",      "2.0",      "2.8",      "1.3",      "2.3",      "1.0",      "1.0",      "1.6",      "1.0",      "1.1",      "2.1",      "2.7",          "3.2",      "1.0",      "1.0",      "3.2",      "3.1",      "1.0",      "1.0",          "1.0",      "2.1",      "1.0",      "1.4",      "2.1",      "2.0",      "2.4",      "1.0'",     "2.2",      "3.0",      "1.0",      "1.0",      "3.3",      "1.0",      "1.3",      "1.0",      "1.1",      "2.5",      "1.5",      "2.7",      "2.0",      "2.4",      "1.1",      "3.4",      "1.0"];
+let listRelasePatch =    [1.2,        2.1,              1.0,      2.0,      2.6,      3.4,      1.0,      1.0,      1.0,      3.1,      1.1,      1.0,      3.0,      3.1,      1.0,      1.1,      3.0,      1.5,      3.3,      1.2,      2.0,      2.8,      1.3,      2.3,      1.0,      1.0,      1.6,      1.0,      1.1,      2.1,      2.7,          3.2,      1.0,      1.0,      3.2,      3.1,      1.0,      1.0,          1.0,      2.1,      1.0,      1.4,      2.1,      2.0,      2.4,      1.0,     2.2,      3.0,      1.0,      1.0,      3.3,      1.0,      1.3,      1.0,      1.1,      2.5,      1.5,      2.7,      2.0,      2.4,      1.1,      3.4,      1.0];
    
 //Contient les types du personnage à trouver
 let MystnomCharacter ;
@@ -115,6 +115,44 @@ function createBoxImage(NomChara){//ça crée un boite ave une image
 }
 
 
+function createBoxVer(relasePatch,MystrelasePatch){//ça crée un boite des version
+  let currentDiv = document.querySelector("#ListeGuess").firstChild;//choix de la div dont on vas ajouté les boites
+  //la boite en elle même 
+  let newDiv = document.createElement("div");
+  let newImg = document.createElement("img");
+  newDiv.classList.add("versionimg");
+  if(relasePatch > MystrelasePatch){
+    let URLimage = "img/Arrow_Bottom.png";//trouve URL de l'image 
+    newImg.src = URLimage;
+    newDiv.style.backgroundColor = "red";
+    let newP = document.createElement("p");
+    newP.classList.add("version");
+    let newContent = document.createTextNode(relasePatch);
+    newP.appendChild(newContent);
+    newDiv.appendChild(newP);
+  }
+  else if(relasePatch < MystrelasePatch){
+    let URLimage = "img/Arrow_top.png";//trouve URL de l'image 
+    newImg.src = URLimage;
+    newDiv.style.backgroundColor = "red";
+    let newP = document.createElement("p");
+    let newContent = document.createTextNode(relasePatch);
+    newP.appendChild(newContent);
+    newP.classList.add("version");
+    newDiv.appendChild(newP);
+  }
+  else{
+    let URLimage = "img/Arrow_valid.png";//trouve URL de l'image 
+    newImg.src = URLimage;
+    newDiv.style.backgroundColor = "green";
+  }
+  newDiv.appendChild(newImg);
+  //on met les enfants
+  newDiv.classList.add("box");//la boite est encore une fois une boite 
+  currentDiv.parentNode.insertBefore(newDiv, currentDiv);//on met la boite newDiv avant la currentDiv
+}
+
+
 function createLine(){//ça crée une ligne de boite 
     let GuessPersoNom = document.getElementById('form').value;//get le nom entrée dans la textbox 
     let idPerso = -1;
@@ -132,7 +170,7 @@ function createLine(){//ça crée une ligne de boite
         teamPlacement = listTeamPlacement[idPerso];
         relasePatch = listRelasePatch[idPerso];
 
-        createBox(relasePatch,MystrelasePatch);
+        createBoxVer(relasePatch,MystrelasePatch);
         createBox(teamPlacement,MystteamPlacement);
         createBox(weaponType,MystweaponType);
         createBox(elementalPower,MystelementalPower);
