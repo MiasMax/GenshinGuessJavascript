@@ -123,12 +123,13 @@ body{
 	margin: 1vw;
 	text-shadow: 0 0 10px black;
 }
-
+/*
 .resetclear{
 	margin-left: 0.5%;
 }
+*/
 
-.return{
+.button form{
 	margin-right: 0.5%;
 }
 
