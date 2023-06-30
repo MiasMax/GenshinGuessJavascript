@@ -5,83 +5,38 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/index.css">
         <link rel="shortcut icon" href="img/logo.png">
-        <script type="text/javascript" src="javascript/Function.js"></script>
+
+        <meta name="description" content="Play game on the theme of genshin and have fun :]">
+        <meta name="author" content="MiasMaxence">
+        <meta name="keyword" content="genshin impact,genshin,genshinguess,genshinchess,genshingames">
+
+        <meta property="og:title" content="Genshin Guess">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.genshinguess.com">
+        <meta property="og:site_name" content="Genshin Games">
+        <meta property="og:description" content="Play game on the theme of genshin and have fun :]">
     </head>
 
-    <body onload="choixPerso()">
-        
-
+    <body>   
         <div class ="accueil">
             <h1>
-                Genshin Guess
+                Chose your genshin game 
             </h1>
-            <p>
-                Guess Genshin Impact character !
-            </p>
-        </div>
         
-        <div class="rep"><!--le Form -->
-            <div class="autocomplete">
-                <input id="form" placeholder="Type character name ..." type="search" name="nom" onkeypress="verifInput(this.id, 'ok');"/><!--le textBox -->
-                <script>autocomplete(document.getElementById("form"), listNomCharacter);</script><!--lance le script autocomplete -->
-            </div>
-            <input type="submit" value="OK" onclick="createLine()" id="ok" name="btnSub" /><!--le OK -->
-        </div>
         
-        <div class="button">
-            <input type="submit" value="Reset & Clear" onclick="ResetClearButton()"></input><!--le bouton reset pour reset les guess -->
-            <input class="buttonGiveUp" type="submit" value="GiveUp" onclick="GiveUp()"></input><!--pour afficher le nom à trouver -->
-        </div>
+            <h2>
+                Genshin Guess
+            </h2>
+            <form action="genshinguess.html">
+                <input type="submit" value="Go to genshinguess" />
+            </form>
 
-        <div id="GiveUpid" class="GiveUp"></div>
-
-        <div id="jeu" class="jeu"><!--la partie ou le jeu se passe -->
-            <div class ="categorie"><!--la partie qui affiche les différentes catégorie  -->
-                    <div>
-                        <h3>
-                            Image
-                        </h3>
-                    </div>
-                    <div>
-                        <h3>
-                            Name
-                        </h3>
-                    </div>
-                    <div>
-                            <h3>
-                                Gender
-                            </h3>
-                    </div>
-                    <div>
-                            <h3>
-                                Region
-                            </h3>
-                    </div>
-                    <div>
-                            <h3>
-                                Elemental Power
-                            </h3>
-                    </div>
-                    <div>
-                            <h3>
-                                Weapon Type
-                            </h3>
-                    </div>
-                    <div>
-                            <h3>
-                                Team Placement
-                            </h3>
-                    </div>
-                    <div>
-                        <h3>
-                            Release Patch
-                        </h3>
-                    </div>
-            </div>
-            
-            <div id="ListeGuess" class="ListeGuess"><!--sert de repere pour la géneration des casses -->
-                <div id="Guess" class="Guess"></div><!--sert de first child-->
-            </div>  
+            <h2>
+                Genshin Chess
+            </h2>
+            <form action="genshinchess.html">
+                <input type="submit" value="Go to genshinguess" />
+            </form>
         </div>
     </body>
 </html>

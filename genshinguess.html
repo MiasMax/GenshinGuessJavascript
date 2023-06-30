@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>GENSHIN DLE</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/genshinguess.css">
+        <link rel="shortcut icon" href="img/logo.png">
+        <script type="text/javascript" src="javascript/genshinguess.js"></script>
+    </head>
+
+    <body onload="choixPerso()">
+        
+
+        <div class ="accueil">
+            <h1>
+                Genshin Guess
+            </h1>
+            <p>
+                Guess Genshin Impact character !
+            </p>
+        </div>
+        
+        <div class="rep"><!--le Form -->
+            <div class="autocomplete">
+                <input id="form" placeholder="Type character name ..." type="search" name="nom" onkeypress="verifInput(this.id, 'ok');"/><!--le textBox -->
+                <script>autocomplete(document.getElementById("form"), listNomCharacter);</script><!--lance le script autocomplete -->
+            </div>
+            <input type="submit" value="OK" onclick="createLine()" id="ok" name="btnSub" /><!--le OK -->
+        </div>
+        
+        <div class="button">
+            <input type="submit" value="Reset & Clear" onclick="ResetClearButton()"></input><!--le bouton reset pour reset les guess -->
+            <input class="buttonGiveUp" type="submit" value="GiveUp" onclick="GiveUp()"></input><!--pour afficher le nom à trouver -->
+        </div>
+
+        <div id="GiveUpid" class="GiveUp"></div>
+
+        <div id="jeu" class="jeu"><!--la partie ou le jeu se passe -->
+            <div class ="categorie"><!--la partie qui affiche les différentes catégorie  -->
+                    <div>
+                        <h3>
+                            Image
+                        </h3>
+                    </div>
+                    <div>
+                        <h3>
+                            Name
+                        </h3>
+                    </div>
+                    <div>
+                            <h3>
+                                Gender
+                            </h3>
+                    </div>
+                    <div>
+                            <h3>
+                                Region
+                            </h3>
+                    </div>
+                    <div>
+                            <h3>
+                                Elemental Power
+                            </h3>
+                    </div>
+                    <div>
+                            <h3>
+                                Weapon Type
+                            </h3>
+                    </div>
+                    <div>
+                            <h3>
+                                Team Placement
+                            </h3>
+                    </div>
+                    <div>
+                        <h3>
+                            Release Patch
+                        </h3>
+                    </div>
+            </div>
+            
+            <div id="ListeGuess" class="ListeGuess"><!--sert de repere pour la géneration des casses -->
+                <div id="Guess" class="Guess"></div><!--sert de first child-->
+            </div>  
+        </div>
+    </body>
+</html>
