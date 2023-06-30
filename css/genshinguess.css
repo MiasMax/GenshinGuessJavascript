@@ -34,6 +34,11 @@ body{
 	text-shadow: 0 0 10px black;
 }
 
+.accueil img{
+	margin: auto;
+	align-items : center;
+	display: inline;
+}
 
 .jeu {
 	margin: auto;

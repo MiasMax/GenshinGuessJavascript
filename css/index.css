@@ -3,6 +3,30 @@
 	font-family: lastninja; 
 	src: url('../font/lastninja.ttf');
 } 
+@keyframes float{
+  50%{
+    transform: translateY(15px);
+  }
+}
+@keyframes taadaa{
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}/*
+@keyframes taadaa2{
+  100% {
+    opacity: 0;
+  }
+
+  0% {
+    opacity: 1;
+  }
+}
+*/
 
 body{
 	background-image: url('../img/fond4.png');
@@ -58,3 +82,19 @@ input {
     color: DodgerBlue;
     transition: 1s;
   }
+
+
+.accueil img{
+  animation: float 3s ease-in-out infinite;
+  animation: taadaa 2s;
+  border: solid DodgerBlue ;
+  border-width: 1em;
+  left: 55%;
+  top: 30%;
+  border-radius: 35px;
+  position: absolute;
+  width : 30%; 
+  height : 32%; 
+}
+
+  

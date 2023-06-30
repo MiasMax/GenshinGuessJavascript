@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/index.css">
         <link rel="icon" type="img/png" sizes="16x16" href="img/logo.png">
+        <script type="text/javascript" src="javascript/index.js"></script>
 
         <meta name="description" content="Play game on the theme of genshin and have fun :]">
         <meta name="author" content="MiasMaxence">
@@ -17,8 +18,8 @@
         <meta property="og:description" content="Play game on the theme of genshin and have fun :]">
     </head>
 
-    <body>   
-        <div class ="accueil">
+    <body onload="onload()">   
+        <div class ="accueil" id="accueil">
             <h1>
                 Chose your genshin game 
             </h1>
@@ -27,9 +28,16 @@
             <h2>
                 Genshin Guess
             </h2>
-            <form action="genshinguess.html">
-                <input type="submit" value="Go to genshinguess" />
-            </form>
+            <div class="guess" id="guessID" >
+                <form action="genshinguess.html">
+                    <input class="buttonguess" id="buttonguessID" type="submit" value="Go to genshinguess" />
+                </form>
+                
+            </div>
+            
+            
+                
+
 
             <h2>
                 Genshin Chess
