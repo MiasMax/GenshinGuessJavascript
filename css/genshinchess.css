@@ -1,3 +1,43 @@
-#board{
-    width: 400px
+#chessboard{
+    width: 320px;
+    height: 320px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chessCase{
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.black .chessCase{
+    background-color: black;
+}
+
+.aquamarine{
+    background-color: aquamarine;
+}
+
+.white .chessCase{
+    background-color: white;
+}
+
+.imgPiece{
+    width: 20px;
+    height: 40px;
+    margin-left: 25%;
+    position: relative;
+    z-index: -9;
+}
+
+path{
+    position: relative;
+    z-index: -10;
+}
+
+.piece{
+    position: relative;
+    z-index: 9;
 }
