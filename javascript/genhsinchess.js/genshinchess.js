@@ -60,7 +60,7 @@ allCases.forEach(chessCase => {
 
 let draggedElement
 let startPosition
-
+/*
 function touchStart(e){
     draggedElement = e.target
     startPosition = e.target.parentNode.getAttribute('case-id')
@@ -70,7 +70,7 @@ function touchOver(e) {
     var touchLocation = e.targetTouches[0];
     draggedElement.style.left = touchLocation.pageX + 'px';
     draggedElement.style.top = touchLocation.pageY + 'px';
-}
+}*/
 
 function dragStart(e){
     draggedElement = e.target
