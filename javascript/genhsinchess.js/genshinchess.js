@@ -94,7 +94,7 @@ function dragDrop(e){
             e.target.parentNode.append(draggedElement)
             e.target.remove();
             checkForWin()
-            //changePlayer();
+            changePlayer();
             return
         }
         if(taken && takenByOpponent){
@@ -103,7 +103,7 @@ function dragDrop(e){
         if(valid){
             e.target.append(draggedElement)
             checkForWin()
-            //changePlayer();
+            changePlayer();
             return
         }
     }
