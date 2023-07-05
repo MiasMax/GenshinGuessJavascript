@@ -38,33 +38,33 @@ input {
     padding: 10px;
     font-size: 16px;
     border-radius: 10px;
-  }
-  
-  input[type=text] {
+}
+
+input[type=text] {
     background-color: #f1f1f1;
     width: 100%;
     border: solid white;
-  }
-  
-  input[type=submit] {
+}
+
+input[type=submit] {
     background-color: DodgerBlue;
     color: white;
     border: solid DodgerBlue ;
     transition: 1s;
-  }
-  
-  input[type=submit]:hover {
+}
+
+input[type=submit]:hover {
     background-color: white;
     color: DodgerBlue;
     transition: 1s;
-  }
+}
 
- 
+
 
 
 #chessboard{
-    width: 320px;
-    height: 320px;
+    width: 640px;
+    height: 640px;
     background-color: rgb(0, 183, 255);
     display: flex;
     flex-wrap: wrap;
@@ -74,8 +74,8 @@ input {
 }
 
 .chessCase{
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     position: relative;
 }
 
@@ -92,8 +92,8 @@ input {
 }
 
 .imgPiece{
-    width: 20px;
-    height: 40px;
+    width: 40px;
+    height: 80px;
     margin-left: 25%;
     position: relative;
     z-index: -9;
