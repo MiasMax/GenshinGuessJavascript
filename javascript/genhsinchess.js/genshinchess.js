@@ -53,13 +53,24 @@ allCases.forEach(chessCase => {
     chessCase.addEventListener('dragstart', dragStart)
     chessCase.addEventListener('dragover', dragOver)
     chessCase.addEventListener('drop', dragDrop)
-    chessCase.addEventListener('touchstart', dragOver)
-    chessCase.addEventListener('touchmove', dragOver)
-    chessCase.addEventListener('touchleave', dragDrop)
+    chessCase.addEventListener('touchstart', touchStart)
+    chessCase.addEventListener('touchmove', touchOver)
+    chessCase.addEventListener('touchend', dragDrop)
 })
 
 let draggedElement
 let startPosition
+
+function touchStart(e){
+    draggedElement = e.target
+    startPosition = e.target.parentNode.getAttribute('case-id')
+}
+
+function touchOver(e) {
+    var touchLocation = e.targetTouches[0];
+    draggedElement.style.left = touchLocation.pageX + 'px';
+    draggedElement.style.top = touchLocation.pageY + 'px';
+}
 
 function dragStart(e){
     draggedElement = e.target
@@ -83,7 +94,7 @@ function dragDrop(e){
             e.target.parentNode.append(draggedElement)
             e.target.remove();
             checkForWin()
-            changePlayer();
+            //changePlayer();
             return
         }
         if(taken && takenByOpponent){
@@ -92,7 +103,7 @@ function dragDrop(e){
         if(valid){
             e.target.append(draggedElement)
             checkForWin()
-            changePlayer();
+            //changePlayer();
             return
         }
     }
