@@ -79,7 +79,7 @@ function dragDrop(e){
         if(takenByOpponent && valid){
             e.target.parentNode.append(draggedElement)
             e.target.remove();
-            changePlayer();
+            //changePlayer();
             return
         }
         if(taken && takenByOpponent){
@@ -87,7 +87,7 @@ function dragDrop(e){
         }
         if(valid){
             e.target.append(draggedElement)
-            changePlayer();
+            //changePlayer();
             return
         }
     }
@@ -178,18 +178,16 @@ function canMouv(targetId,startId){
             break;
 
         case 'bishop' :
-            if (ligneBishopManual(targetId,startId))
+            if (ligneBishop(targetId,startId))
             {return true}
             break;
 
         case 'queen' :
-            if (ligneRook(targetId,startId) || ligneBishopManual(targetId,startId))
+            if (ligneRook(targetId,startId) || ligneBishop(targetId,startId))
             {return true}
             break;
     }
 }
-
-
 
 function ligneRook(targetId,startId){
     const row = Math.floor( startId / width);
@@ -233,7 +231,40 @@ function ligneRook(targetId,startId){
 }
 
 function ligneBishop(targetId,startId){
-
+    for(let i = 1; i < width ; i++){
+        if (targetId === startId + (width*i) + i){
+            for(let retour = -1; Math.abs(retour) < i ; retour--){
+                if(document.querySelector('[case-id="'+(targetId + (width*retour) + retour)+'"]').firstChild){
+                    return false
+                }
+            }
+            return true
+        }
+        else if (targetId === startId + (width*i) - i){
+            for(let retour = 1; Math.abs(retour) < i ; retour++){
+                if(document.querySelector('[case-id="'+(targetId - (width*retour) + retour)+'"]').firstChild){
+                    return false
+                }
+            }
+            return true
+        }
+        else if (targetId === startId - (width*i) + i){
+            for(let retour = -1; Math.abs(retour) < i ; retour--){
+                if(document.querySelector('[case-id="'+(targetId - (width*retour) + retour)+'"]').firstChild){
+                    return false
+                }
+            }
+            return true
+        }
+        else if (targetId === startId - (width*i) - i){
+            for(let retour = 1; Math.abs(retour) < i ; retour++){
+                if(document.querySelector('[case-id="'+(targetId + (width*retour) + retour)+'"]').firstChild){
+                    return false
+                }
+            }
+            return true
+        }
+    }
 }
 
 function ligneBishopManual(targetId,startId){
