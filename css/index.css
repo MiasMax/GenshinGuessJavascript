@@ -3,6 +3,7 @@
 	font-family: lastninja; 
 	src: url('../font/lastninja.ttf');
 } 
+
 @keyframes float{
   50%{
     transform: translateY(15px);
