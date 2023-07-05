@@ -25,14 +25,14 @@ function createBoard(){
         newChessCase.firstChild && newChessCase.firstChild.setAttribute('draggable', true)
         if(row % 2 == 0){
             if(i % 2 != 0){
-                newChessCase.classList.add('black')
+                newChessCase.classList.add('blue')
             }else{
                 newChessCase.classList.add('aquamarine')
             }
         }
         else{
             if(i % 2 == 0){
-                newChessCase.classList.add('black')
+                newChessCase.classList.add('blue')
             }else{
                 newChessCase.classList.add('aquamarine')
             }
@@ -79,6 +79,7 @@ function dragDrop(e){
         if(takenByOpponent && valid){
             e.target.parentNode.append(draggedElement)
             e.target.remove();
+            checkForWin()
             changePlayer();
             return
         }
@@ -87,11 +88,13 @@ function dragDrop(e){
         }
         if(valid){
             e.target.append(draggedElement)
+            checkForWin()
             changePlayer();
             return
         }
     }
 }
+
 
 function changePlayer(){
     if(playerGo === 'white'){
@@ -267,10 +270,12 @@ function ligneBishop(targetId,startId){
     }
 }
 
-function isInCheck(){
-
-}
-
-function canM(){
-
+function checkForWin(){
+    const kings = Array.from(document.querySelectorAll('#king'))
+    if(!kings.some(king => king.firstChild.classList.contains('white'))){
+        alert("le bottom a gagné")
+    }
+    if(!kings.some(king => king.firstChild.classList.contains('black'))){
+        alert("le top a gagné")
+    }
 }
