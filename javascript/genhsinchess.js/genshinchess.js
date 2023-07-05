@@ -79,7 +79,7 @@ function dragDrop(e){
         if(takenByOpponent && valid){
             e.target.parentNode.append(draggedElement)
             e.target.remove();
-            //changePlayer();
+            changePlayer();
             return
         }
         if(taken && takenByOpponent){
@@ -87,7 +87,7 @@ function dragDrop(e){
         }
         if(valid){
             e.target.append(draggedElement)
-            //changePlayer();
+            changePlayer();
             return
         }
     }
@@ -121,21 +121,21 @@ function checkIfValid(target){
     const opponentGo = playerGo === 'white' ? 'black' : 'white'
     const isOpponent = document.querySelector('[case-id="'+targetId+'"]').firstChild?.firstChild?.classList.contains(opponentGo)
     if (isHere && isOpponent){
-        if(canMouv(targetId,startId)){
+        if(canMouvPieces(targetId,startId)){
             return true
         }
     }else if (isHere && !isOpponent) {
         return false
     }
     else{
-        if(canMouv(targetId,startId)){
+        if(canMouvPieces(targetId,startId)){
             return true
         }
     }
     
 }
 
-function canMouv(targetId,startId){
+function canMouvPieces(targetId,startId){
     const piece = draggedElement.id
     switch(piece){
         case 'pawn' :
@@ -267,129 +267,10 @@ function ligneBishop(targetId,startId){
     }
 }
 
-function ligneBishopManual(targetId,startId){
-    if(
-    targetId === startId + (width) + 1 ||
-    targetId === startId + (width*2) + 2 && 
-    !document.querySelector('[case-id="'+(startId + (width) + 1)+'"]').firstChild ||
-    targetId === startId + (width*3) + 3 && 
-    !document.querySelector('[case-id="'+(startId + (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) + 1)+'"]').firstChild ||
-    targetId === startId + (width*4) + 4 && 
-    !document.querySelector('[case-id="'+(startId + (width) + 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) + 1)+'"]').firstChild ||
-    targetId === startId + (width*5) + 5 && 
-    !document.querySelector('[case-id="'+(startId + (width) + 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) + 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) + 1)+'"]').firstChild ||
-    targetId === startId + (width*6) + 6 && 
-    !document.querySelector('[case-id="'+(startId + (width) + 5)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) + 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) + 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) + 1)+'"]').firstChild ||
-    targetId === startId + (width*7) + 7 && 
-    !document.querySelector('[case-id="'+(startId + (width) + 6)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) + 5)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) + 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) + 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) + 1)+'"]').firstChild ||
+function isInCheck(){
 
-    targetId === startId - (width) + 1 ||
-    targetId === startId - (width*2) + 2 && 
-    !document.querySelector('[case-id="'+(startId - (width) + 1)+'"]').firstChild ||
-    targetId === startId - (width*3) + 3 && 
-    !document.querySelector('[case-id="'+(startId - (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) + 1)+'"]').firstChild ||
-    targetId === startId - (width*4) + 4 && 
-    !document.querySelector('[case-id="'+(startId - (width) + 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) + 1)+'"]').firstChild ||
-    targetId === startId - (width*5) + 5 && 
-    !document.querySelector('[case-id="'+(startId - (width) + 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) + 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) + 1)+'"]').firstChild ||
-    targetId === startId - (width*6) + 6 && 
-    !document.querySelector('[case-id="'+(startId - (width) + 5)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) + 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) + 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) + 1)+'"]').firstChild ||
-    targetId === startId - (width*7) + 7 && 
-    !document.querySelector('[case-id="'+(startId - (width) + 6)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) + 5)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) + 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) + 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) + 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) + 1)+'"]').firstChild ||
-
-    targetId === startId - (width) - 1 ||
-    targetId === startId - (width*2) - 2 && 
-    !document.querySelector('[case-id="'+(startId - (width) - 1)+'"]').firstChild ||
-    targetId === startId - (width*3) - 3 && 
-    !document.querySelector('[case-id="'+(startId - (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) - 1)+'"]').firstChild ||
-    targetId === startId - (width*4) - 4 && 
-    !document.querySelector('[case-id="'+(startId - (width) - 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) - 1)+'"]').firstChild ||
-    targetId === startId - (width*5) - 5 && 
-    !document.querySelector('[case-id="'+(startId - (width) - 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) - 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) - 1)+'"]').firstChild ||
-    targetId === startId - (width*6) - 6 && 
-    !document.querySelector('[case-id="'+(startId - (width) - 5)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) - 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) - 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) - 1)+'"]').firstChild ||
-    targetId === startId - (width*7) - 7 && 
-    !document.querySelector('[case-id="'+(startId - (width) - 6)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) - 5)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) - 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) - 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId - (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId - (width) - 1)+'"]').firstChild ||
-
-    targetId === startId + (width) - 1 ||
-    targetId === startId + (width*2) - 2 && 
-    !document.querySelector('[case-id="'+(startId + (width) - 1)+'"]').firstChild ||
-    targetId === startId + (width*3) - 3 && 
-    !document.querySelector('[case-id="'+(startId + (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) - 1)+'"]').firstChild ||
-    targetId === startId + (width*4) - 4 && 
-    !document.querySelector('[case-id="'+(startId + (width) - 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) - 1)+'"]').firstChild ||
-    targetId === startId + (width*5) - 5 && 
-    !document.querySelector('[case-id="'+(startId + (width) - 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) - 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) - 1)+'"]').firstChild ||
-    targetId === startId + (width*6) - 6 && 
-    !document.querySelector('[case-id="'+(startId + (width) - 5)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) - 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) - 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) - 1)+'"]').firstChild ||
-    targetId === startId + (width*7) - 7 && 
-    !document.querySelector('[case-id="'+(startId + (width) - 6)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) - 5)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) - 4)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) - 3)+'"]').firstChild &&
-    !document.querySelector('[case-id="'+(startId + (width) - 2)+'"]').firstChild && 
-    !document.querySelector('[case-id="'+(startId + (width) - 1)+'"]').firstChild
-    )
-    {
-        return true
-    }
 }
 
-function checkForWin(){
+function canM(){
 
 }
