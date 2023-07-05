@@ -53,9 +53,9 @@ allCases.forEach(chessCase => {
     chessCase.addEventListener('dragstart', dragStart)
     chessCase.addEventListener('dragover', dragOver)
     chessCase.addEventListener('drop', dragDrop)
-    chessCase.addEventListener('touchstart', touchStart)
+    /*chessCase.addEventListener('touchstart', touchStart)
     chessCase.addEventListener('touchmove', touchOver)
-    chessCase.addEventListener('touchend', dragDrop)
+    chessCase.addEventListener('touchend', dragDrop)*/
 })
 
 let draggedElement
