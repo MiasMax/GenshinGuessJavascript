@@ -26,7 +26,6 @@ const startPieces = [
     '', '', '', rook_black, knight_black, bishop_black, queen_black, king_black, bishop_black, knight_black, rook_black,'', '', ''
 ]
 
-
 function createBoard(){
     startPieces.forEach((startPieces , i) => {
         const row = Math.floor( i / width);
@@ -69,6 +68,10 @@ function createBoard(){
         }
         chessboard.appendChild(newChessCase)
     })
+    const elementSp = document.querySelectorAll('.'+playerGo);
+    elementSp.forEach((nb) => {
+        nb.style.boxShadow = 'inset 0 0 1em rgb(255, 235, 119), 0 0 1em rgb(255, 235, 119)';
+    });
 }
 createBoard();
 
@@ -96,7 +99,6 @@ function dragOver(e) {
 
 function dragDrop(e){
     e.stopPropagation()
-    console.log(playerGo)
     const correctGo = draggedElement.firstChild?.classList.contains(playerGo)
     const taken = e.target.classList.contains('piece')
     const valid = checkIfValid(e.target) 
@@ -127,9 +129,7 @@ function dragDrop(e){
     takenByOpponent2 = e.target.firstChild?.classList.contains(opponentGo2)
     takenByOpponent3 = e.target.firstChild?.classList.contains(opponentGo3)
     if(correctGo){
-        console.log("checkIfValid :" + valid)
         if(takenByOpponent1 && valid || takenByOpponent2 && valid || takenByOpponent3 && valid ){
-            console.log("eat")
             e.target.parentNode.append(draggedElement)
             e.target.remove();
             checkForDead();
@@ -137,11 +137,9 @@ function dragDrop(e){
             return
         }
         if(takenByOpponent1 && taken || takenByOpponent2 && taken || takenByOpponent3 && taken ){
-            console.log("not a mouv")
             return
         }
         if(valid){
-            console.log("mouv")
             e.target.append(draggedElement)
             checkForDead();
             changePlayer();
@@ -151,6 +149,10 @@ function dragDrop(e){
 }
 
 function changePlayer(){
+    const elementDel = document.querySelectorAll('.'+playerGo);
+    elementDel.forEach((nb) => {
+        nb.style.boxShadow = '';
+    });
     if(playerGo === 'white'){
         playerGo = 'purple'
         playerDisplay.textContent = "purple"
@@ -164,10 +166,17 @@ function changePlayer(){
         playerGo = 'white'
         playerDisplay.textContent = "white"
     }
+    const elementSp = document.querySelectorAll('.'+playerGo);
+    elementSp.forEach((nb) => {
+        nb.style.boxShadow = 'inset 0 0 1em rgb(255, 235, 119), 0 0 1em rgb(255, 235, 119)';
+    });
+    
+    
 
     if (playerGo === 'purple' && !statusPlayerPurpleAlive){
         playerGo = 'black'
         playerDisplay.textContent = "black"
+        
     }
     if (playerGo === 'black' && !statusPlayerBlackAlive){
         playerGo = 'green'
@@ -233,16 +242,13 @@ function checkIfValid(target){
     isOpponent3 = document.querySelector('[case-id="'+targetId+'"]').firstChild?.firstChild?.classList.contains(opponentGo3)
     if(document.querySelector('[case-id="'+startPosition+'"]').firstChild?.getAttribute('id') === "pawn"){
         if (isHere && isOpponent1 || isHere && isOpponent2 || isHere && isOpponent3 ){
-            console.log("1")
             if(canMouvPawn(targetId,startId)){
                 return true
             }
         }else if (isHere && !isOpponent1 || isHere && !isOpponent2 || isHere && !isOpponent3) {
-            console.log("2")
             return false
         }
         else{
-            console.log("3")
             if(canMouvPawn(targetId,startId)){
                 return true
             }
