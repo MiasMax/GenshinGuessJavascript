@@ -268,32 +268,6 @@ function ligneBishop(targetId,startId){
         }
     }
 }
-/*
-function ligneRookForKing(opponentKingId,opponentGo){
-    const row = Math.floor( opponentKingId / width);
-    let newRow = Math.floor( opponentKingId / width);
-    for(let i = 1; i < width ; i++){ 
-
-        console.log("pass", document.querySelector('[case-id="'+(opponentKingId + i)+'"]'))
-        newRow = Math.floor( (opponentKingId + i) / width);
-        if(row === newRow){
-            if(document.querySelector('[case-id="'+(opponentKingId + i)+'"]').firstChild.getAttribute('id') === "rook"){
-                console.log(document.querySelector('[case-id="'+(opponentKingId + i)+'"]').firstChild.getAttribute('id'), "les +")
-                //return true
-            }
-            
-        }
-
-        console.log("pass", document.querySelector('[case-id="'+(opponentKingId - i)+'"]'))
-        newRow = Math.floor( (opponentKingId - i) / width);
-        if(row === newRow){
-            if(document.querySelector('[case-id="'+(opponentKingId - i)+'"]').firstChild.getAttribute('id') === "rook"){
-                console.log(document.querySelector('[case-id="'+(opponentKingId - i)+'"]').firstChild.getAttribute('id') , "les -")
-                //return true
-            }
-        }
-    }
-}*/
 
 function checkForWin(){
     const kings = Array.from(document.querySelectorAll('#king'))

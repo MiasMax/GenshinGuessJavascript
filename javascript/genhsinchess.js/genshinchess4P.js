@@ -2,6 +2,11 @@ const chessboard = document.querySelector("#chessboard");
 const playerDisplay = document.querySelector("#player");
 const width = 14;
 let playerGo = 'white'
+let statusPlayerWhiteAlive = true
+let statusPlayerBlackAlive = true
+let statusPlayerGreenAlive = true
+let statusPlayerPurpleAlive = true
+let nbPlayerDead = 0
 playerDisplay.textContent = "white"
 
 const startPieces = [
@@ -52,7 +57,7 @@ function createBoard(){
             newChessCase.firstChild.firstChild.classList.add('green')
         }
         else if (i == 54 || i == 55 || i == 68 || i == 69 || i == 82 || i == 83 || i == 96 || i == 97 || 
-            i == 110 || i == 111 || i == 124 || i == 126 || i == 138 || i == 139|| i == 152 || i == 153){
+            i == 110 || i == 111 || i == 124 || i == 125 || i == 138 || i == 139|| i == 152 || i == 153){
             newChessCase.firstChild.firstChild.classList.add('purple')
         }
         else if (i >= 171 && i <= 178 || i >= 185 && i <= 192){
@@ -66,7 +71,6 @@ function createBoard(){
     })
 }
 createBoard();
-
 
 const allCases = document.querySelectorAll("#chessboard .chessCase")
 
@@ -92,12 +96,16 @@ function dragOver(e) {
 
 function dragDrop(e){
     e.stopPropagation()
-    const correctGo = draggedElement.classList.contains(playerGo)
+    console.log(playerGo)
+    const correctGo = draggedElement.firstChild?.classList.contains(playerGo)
     const taken = e.target.classList.contains('piece')
-    const valid = true //checkIfValid(e.target) ///////////////////////////////////////////////////////
+    const valid = checkIfValid(e.target) 
     let opponentGo1 = ""
     let opponentGo2 = ""
     let opponentGo3 = ""
+    let takenByOpponent1 = ""
+    let takenByOpponent2 = ""
+    let takenByOpponent3 = ""
     if(playerGo === 'white'){
         opponentGo1 = "purple"
         opponentGo2 = "black"
@@ -115,62 +123,135 @@ function dragDrop(e){
         opponentGo2 = "purple"
         opponentGo3 = "black"
     }
-    const takenByOpponent1 = e.target.firstChild?.classList.contains(opponentGo1)
-    const takenByOpponent2 = e.target.firstChild?.classList.contains(opponentGo2)
-    const takenByOpponent3 = e.target.firstChild?.classList.contains(opponentGo3)
+    takenByOpponent1 = e.target.firstChild?.classList.contains(opponentGo1)
+    takenByOpponent2 = e.target.firstChild?.classList.contains(opponentGo2)
+    takenByOpponent3 = e.target.firstChild?.classList.contains(opponentGo3)
     if(correctGo){
+        console.log("checkIfValid :" + valid)
         if(takenByOpponent1 && valid || takenByOpponent2 && valid || takenByOpponent3 && valid ){
+            console.log("eat")
             e.target.parentNode.append(draggedElement)
             e.target.remove();
-            checkForWin()
+            checkForDead();
             changePlayer();
             return
         }
         if(takenByOpponent1 && taken || takenByOpponent2 && taken || takenByOpponent3 && taken ){
+            console.log("not a mouv")
             return
         }
         if(valid){
+            console.log("mouv")
             e.target.append(draggedElement)
-            //checkForWin()
+            checkForDead();
             changePlayer();
             return
         }
     }
 }
 
-
 function changePlayer(){
     if(playerGo === 'white'){
-        //reverceIds()
         playerGo = 'purple'
         playerDisplay.textContent = "purple"
     }else if (playerGo === 'purple'){
-        //reverceIds()
         playerGo = 'black'
         playerDisplay.textContent = "black"
     }else if (playerGo === 'black'){
-        //reverceIds()
         playerGo = 'green'
         playerDisplay.textContent = "green"
     }else if (playerGo === 'green'){
-        //reverceIds()
         playerGo = 'white'
         playerDisplay.textContent = "white"
     }
-}
 
+    if (playerGo === 'purple' && !statusPlayerPurpleAlive){
+        playerGo = 'black'
+        playerDisplay.textContent = "black"
+    }
+    if (playerGo === 'black' && !statusPlayerBlackAlive){
+        playerGo = 'green'
+        playerDisplay.textContent = "green"
+    }
+    if (playerGo === 'green' && !statusPlayerGreenAlive){
+        playerGo = 'white'
+        playerDisplay.textContent = "white"
+    }
+    if (playerGo === 'white' && !statusPlayerWhiteAlive){
+        playerGo = 'purple'
+        playerDisplay.textContent = "purple"
+    }
+    if (playerGo === 'purple' && !statusPlayerPurpleAlive){
+        playerGo = 'black'
+        playerDisplay.textContent = "black"
+    }
+    if (playerGo === 'black' && !statusPlayerBlackAlive){
+        playerGo = 'green'
+        playerDisplay.textContent = "green"
+    }
+    if (playerGo === 'green' && !statusPlayerGreenAlive){
+        playerGo = 'white'
+        playerDisplay.textContent = "white"
+    }
+    if (playerGo === 'white' && !statusPlayerWhiteAlive){
+        playerGo = 'purple'
+        playerDisplay.textContent = "purple"
+    }
+    
+
+}
 
 function checkIfValid(target){
     const targetId = Number(target.getAttribute('case-id')) || Number(target.parentNode.getAttribute('case-id'))
     const startId = Number(startPosition)
     const isHere = document.querySelector('[case-id="'+targetId+'"]').firstChild
-    const opponentGo = playerGo === 'white' ? 'black' : 'white'
-    const isOpponent = document.querySelector('[case-id="'+targetId+'"]').firstChild?.firstChild?.classList.contains(opponentGo)
-    if (isHere && isOpponent){
+    let opponentGo1 = ""
+    let opponentGo2 = ""
+    let opponentGo3 = ""
+    let isOpponent1 = ""
+    let isOpponent2 = ""
+    let isOpponent3 = ""
+    if(playerGo === 'white'){
+        opponentGo1 = "purple"
+        opponentGo2 = "black"
+        opponentGo3 = "green"
+    }else if (playerGo === 'purple'){
+        opponentGo1 = "black"
+        opponentGo2 = "green"
+        opponentGo3 = "white"
+    }else if (playerGo === 'black'){
+        opponentGo1 = "green"
+        opponentGo2 = "purple"
+        opponentGo3 = "white"
+    }else if (playerGo === 'green'){
+        opponentGo1 = "white"
+        opponentGo2 = "purple"
+        opponentGo3 = "black"
+    }
+    isOpponent1 = document.querySelector('[case-id="'+targetId+'"]').firstChild?.firstChild?.classList.contains(opponentGo1)
+    isOpponent2 = document.querySelector('[case-id="'+targetId+'"]').firstChild?.firstChild?.classList.contains(opponentGo2)
+    isOpponent3 = document.querySelector('[case-id="'+targetId+'"]').firstChild?.firstChild?.classList.contains(opponentGo3)
+    if(document.querySelector('[case-id="'+startPosition+'"]').firstChild?.getAttribute('id') === "pawn"){
+        if (isHere && isOpponent1 || isHere && isOpponent2 || isHere && isOpponent3 ){
+            console.log("1")
+            if(canMouvPawn(targetId,startId)){
+                return true
+            }
+        }else if (isHere && !isOpponent1 || isHere && !isOpponent2 || isHere && !isOpponent3) {
+            console.log("2")
+            return false
+        }
+        else{
+            console.log("3")
+            if(canMouvPawn(targetId,startId)){
+                return true
+            }
+        }
+    }else if (isHere && isOpponent1 || isHere && isOpponent2 || isHere && isOpponent3 ){
         if(canMouvPieces(targetId,startId)){
             return true
         }
-    }else if (isHere && !isOpponent) {
+    }else if (isHere && !isOpponent1 || isHere && !isOpponent2 || isHere && !isOpponent3) {
         return false
     }
     else{
@@ -181,19 +262,55 @@ function checkIfValid(target){
     
 }
 
+function canMouvPawn(targetId,startId){
+    color = document.querySelector('[case-id="'+startPosition+'"]').firstChild?.firstChild.getAttribute('class')
+    switch(color){
+        case 'imgPiece white' :
+            const startRowWhite = [17,18,19,20,21,22,23,24]
 
-function canMouvPieces(targetId,startId){
-    const piece = draggedElement.id
-    switch(piece){
-        case 'pawn' :
-            const startRow = [17,18,19,20,21,22,23,24]
-            if (startRow.includes(startId) && targetId === startId + (2*width) || 
+            if (
+            startRowWhite.includes(startId) && targetId === startId + (2*width) || 
             targetId === startId + (width) && !(document.querySelector('[case-id="'+targetId+'"]').firstChild) || 
             targetId === startId + (width-1) && document.querySelector('[case-id="'+targetId+'"]').firstChild ||
             targetId === startId + (width+1) && document.querySelector('[case-id="'+targetId+'"]').firstChild
             ){return true}
             break;
-/*
+
+        case 'imgPiece purple' :
+            const startRowPurple = [54,68,82,96,110,124,138,152]
+            if (
+            startRowPurple.includes(startId) && targetId === (startId - 2 ) ||
+            targetId === startId - 1 && !(document.querySelector('[case-id="'+targetId+'"]').firstChild) || 
+            targetId === startId - (width+1) && document.querySelector('[case-id="'+targetId+'"]').firstChild ||
+            targetId === startId + (width-1) && document.querySelector('[case-id="'+targetId+'"]').firstChild
+            ){return true}
+            break;
+
+        case 'imgPiece black' :
+            const startRowBlack = [171,172,173,174,175,176,177,178]
+            if (
+            startRowBlack.includes(startId) && targetId === startId - (2*width) ||
+            targetId === startId - (width) && !(document.querySelector('[case-id="'+targetId+'"]').firstChild) || 
+            targetId === startId - (width-1) && document.querySelector('[case-id="'+targetId+'"]').firstChild ||
+            targetId === startId - (width+1) && document.querySelector('[case-id="'+targetId+'"]').firstChild
+            ){return true}
+            break;
+
+        case 'imgPiece green' : 
+            const startRowGreen = [43,57,71,85,99,113,127,141]
+            if (
+            startRowGreen.includes(startId) && targetId === startId + 2 ||
+            targetId === startId + 1 && !(document.querySelector('[case-id="'+targetId+'"]').firstChild) || 
+            targetId === startId - (width-1) && document.querySelector('[case-id="'+targetId+'"]').firstChild ||
+            targetId === startId + (width+1) && document.querySelector('[case-id="'+targetId+'"]').firstChild
+            ){return true}
+            break;
+    }
+}
+
+function canMouvPieces(targetId,startId){
+    const piece = draggedElement.id
+    switch(piece){
         case 'knight' :
             if (targetId === startId + (width*2) - 1 || 
             targetId === startId + (width*2) + 1 || 
@@ -218,12 +335,12 @@ function canMouvPieces(targetId,startId){
             targetId === startId - (width) - 1 
             ){return true}
             break;
-        
+
         case 'rook' :
             if (ligneRook(targetId,startId)
             ){return true}
             break;
-
+ 
         case 'bishop' :
             if (ligneBishop(targetId,startId))
             {return true}
@@ -232,11 +349,10 @@ function canMouvPieces(targetId,startId){
         case 'queen' :
             if (ligneRook(targetId,startId) || ligneBishop(targetId,startId))
             {return true}
-            break;*/
+            break;
     }
 }
 
-/*
 function ligneRook(targetId,startId){
     const row = Math.floor( startId / width);
     const newRow = Math.floor( targetId / width);
@@ -315,49 +431,109 @@ function ligneBishop(targetId,startId){
     }
 }
 
-
-
-function reverceIds(){
-    const allTheCases = document.querySelectorAll(".chessCase")
-    allTheCases.forEach(chessCase => {
-        let id = Number(chessCase.getAttribute('case-id'))
-        id = Math.abs(id - (width * width - 1))
-        chessCase.setAttribute('case-id', id);
-    })
-}
-
-function ligneRookForKing(opponentKingId,opponentGo){
-    const row = Math.floor( opponentKingId / width);
-    let newRow = Math.floor( opponentKingId / width);
-    for(let i = 1; i < width ; i++){ 
-
-        console.log("pass", document.querySelector('[case-id="'+(opponentKingId + i)+'"]'))
-        newRow = Math.floor( (opponentKingId + i) / width);
-        if(row === newRow){
-            if(document.querySelector('[case-id="'+(opponentKingId + i)+'"]').firstChild.getAttribute('id') === "rook"){
-                console.log(document.querySelector('[case-id="'+(opponentKingId + i)+'"]').firstChild.getAttribute('id'), "les +")
-                //return true
-            }
-            
-        }
-
-        console.log("pass", document.querySelector('[case-id="'+(opponentKingId - i)+'"]'))
-        newRow = Math.floor( (opponentKingId - i) / width);
-        if(row === newRow){
-            if(document.querySelector('[case-id="'+(opponentKingId - i)+'"]').firstChild.getAttribute('id') === "rook"){
-                console.log(document.querySelector('[case-id="'+(opponentKingId - i)+'"]').firstChild.getAttribute('id') , "les -")
-                //return true
-            }
-        }
-    }
-}*/
-/*
-function checkForWin(){
+function checkForDead(){
     const kings = Array.from(document.querySelectorAll('#king'))
     if(!kings.some(king => king.firstChild.classList.contains('white'))){
-        alert("le bottom a gagné")
+        if(statusPlayerWhiteAlive){
+            nbPlayerDead++
+            for(let i = 0 ; i < 195 ; i++){
+                if(document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.classList.contains("white")){
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "pawn"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/pawn_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "queen"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/queen_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "bishop"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/bishop_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "knight"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/knight_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "rook"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/rook_vide.png")
+                    }
+                }
+            }
+        }
+        statusPlayerWhiteAlive = false
     }
     if(!kings.some(king => king.firstChild.classList.contains('black'))){
-        alert("le top a gagné")
+        if(statusPlayerBlackAlive){
+            nbPlayerDead++
+            for(let i = 0 ; i < 195 ; i++){
+                if(document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.classList.contains("black")){
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "pawn"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/pawn_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "queen"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/queen_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "bishop"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/bishop_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "knight"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/knight_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "rook"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/rook_vide.png")
+                    }
+                }
+            }
+        }
+        statusPlayerBlackAlive = false
     }
-}*/
+    if(!kings.some(king => king.firstChild.classList.contains('green'))){
+        if(statusPlayerGreenAlive){
+            nbPlayerDead++
+            for(let i = 0 ; i < 195 ; i++){
+                if(document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.classList.contains("green")){
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "pawn"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/pawn_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "queen"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/queen_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "bishop"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/bishop_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "knight"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/knight_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "rook"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/rook_vide.png")
+                    }
+                }
+            }
+        }
+        statusPlayerGreenAlive = false
+    }
+    if(!kings.some(king => king.firstChild.classList.contains('purple'))){
+        if(statusPlayerPurpleAlive){
+            for(let i = 0 ; i < 195 ; i++){
+                if(document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.classList.contains("purple")){
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "pawn"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/pawn_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "queen"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/queen_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "bishop"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/bishop_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "knight"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/knight_vide.png")
+                    }
+                    if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "rook"){
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/rook_vide.png")
+                    }
+                }
+            }
+            nbPlayerDead++
+        }
+        statusPlayerPurpleAlive = false
+    }
+    if(nbPlayerDead == 3){
+        alert("THE GAME HAS ENDEND")
+    }
+}

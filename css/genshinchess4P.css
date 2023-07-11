@@ -100,9 +100,9 @@ input[type=submit]:hover {
     height: 50px;
     margin-left: 25%;
     position: relative;
-   /*z-index: -9;*/
+    z-index: -9;
 }
-/*
+
 path{
     position: relative;
     z-index: -10;
@@ -119,5 +119,6 @@ p{
 
 strong{
     font-size: 150%;
+    color: rgb(0, 183, 255);
 }
-*/
+
