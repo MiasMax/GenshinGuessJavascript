@@ -64,9 +64,8 @@ input[type=submit]:hover {
 
 
 #chessboard{
-    width: 640px;
-    height: 640px;
-    background-color: rgb(0, 183, 255);
+    width: 700px;
+    height: 700px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 2%;
@@ -75,31 +74,35 @@ input[type=submit]:hover {
 }
 
 .chessCase{
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     position: relative;
-}
-
-.black .chessCase{
-    background-color: black;
 }
 
 .aquamarine{
     background-color: rgb(127, 255, 206);
 }
 
-.white .chessCase{
-    background-color: white;
+.blue{
+    background-color: rgb(0, 183, 255);
 }
+
+.NotCase{
+    background-color: white;
+    opacity: 0;
+}
+
+
+
 
 .imgPiece{
-    width: 40px;
-    height: 80px;
+    width: 25px;
+    height: 50px;
     margin-left: 25%;
     position: relative;
-    z-index: -9;
+   /*z-index: -9;*/
 }
-
+/*
 path{
     position: relative;
     z-index: -10;
@@ -117,4 +120,4 @@ p{
 strong{
     font-size: 150%;
 }
-
+*/
