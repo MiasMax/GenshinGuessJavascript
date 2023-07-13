@@ -166,12 +166,6 @@ function changePlayer(){
         playerGo = 'white'
         playerDisplay.textContent = "white"
     }
-    const elementSp = document.querySelectorAll('.'+playerGo);
-    elementSp.forEach((nb) => {
-        nb.style.boxShadow = 'inset 0 0 1em rgb(255, 235, 119), 0 0 1em rgb(255, 235, 119)';
-    });
-    
-    
 
     if (playerGo === 'purple' && !statusPlayerPurpleAlive){
         playerGo = 'black'
@@ -206,6 +200,10 @@ function changePlayer(){
         playerGo = 'purple'
         playerDisplay.textContent = "purple"
     }
+    const elementSp = document.querySelectorAll('.'+playerGo);
+    elementSp.forEach((nb) => {
+        nb.style.boxShadow = 'inset 0 0 1em rgb(255, 235, 119), 0 0 1em rgb(255, 235, 119)';
+    });
     
 
 }
@@ -540,6 +538,6 @@ function checkForDead(){
         statusPlayerPurpleAlive = false
     }
     if(nbPlayerDead == 3){
-        alert("THE GAME HAS ENDEND")
+        alert("THE GAME HAS ENDED")
     }
 }
