@@ -445,19 +445,19 @@ function checkForDead(){
             for(let i = 0 ; i < 195 ; i++){
                 if(document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.classList.contains("white")){
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "pawn"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/pawn_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/pawn_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "queen"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/queen_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/queen_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "bishop"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/bishop_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/bishop_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "knight"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/knight_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/knight_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "rook"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/rook_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/rook_vide.png")
                     }
                 }
             }
@@ -470,19 +470,19 @@ function checkForDead(){
             for(let i = 0 ; i < 195 ; i++){
                 if(document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.classList.contains("black")){
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "pawn"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/pawn_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/pawn_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "queen"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/queen_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/queen_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "bishop"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/bishop_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/bishop_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "knight"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/knight_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/knight_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "rook"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/rook_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/rook_vide.png")
                     }
                 }
             }
@@ -495,19 +495,19 @@ function checkForDead(){
             for(let i = 0 ; i < 195 ; i++){
                 if(document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.classList.contains("green")){
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "pawn"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/pawn_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/pawn_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "queen"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/queen_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/queen_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "bishop"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/bishop_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/bishop_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "knight"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/knight_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/knight_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "rook"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/rook_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/rook_vide.png")
                     }
                 }
             }
@@ -519,19 +519,19 @@ function checkForDead(){
             for(let i = 0 ; i < 195 ; i++){
                 if(document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.classList.contains("purple")){
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "pawn"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/pawn_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/pawn_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "queen"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/queen_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/queen_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "bishop"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/bishop_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/bishop_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "knight"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/knight_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/knight_vide.png")
                     }
                     if(document.querySelector('[case-id="'+i+'"]').firstChild?.getAttribute('id') == "rook"){
-                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces/rook_vide.png")
+                        document.querySelector('[case-id="'+i+'"]').firstChild?.firstChild?.setAttribute('src', "./img/pieces_vrai/rook_vide.png")
                     }
                 }
             }
